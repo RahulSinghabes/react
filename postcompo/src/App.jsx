@@ -4,32 +4,56 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [posts, setposts] = useState([])
+  const postcomponent=posts.map(post=><PostComponent name={post.name} subtitle={post.subtitle} time={post.time} content={post.content}/>)
+  function addPost(){
+      setposts([...posts,{
+          name:"Rahul singh",
+          subtitle:"20 followers",
+          time:"2m ago",
+          content:"i like to announce my new start up"
+       },])
+  }
   return (
-    <>
+    
+    <div style={{backgroundColor:'pink',height:"100vh",}}>
+      <button onClick={addPost}>add post</button>
+    <div style={{display:'flex',justifyContent:'center'}}>
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+          {postcomponent}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
+   </div> 
+    
   )
+}
+function PostComponent({name,subtitle,time,content}){
+    return (
+   <div  style={{width:300 ,height:100,backgroundColor:'skyblue', borderRadius:20,padding :10,margin:0}}>
+     <div style={{display:"flex"}}>
+          <img src={"/bird.jpg"} alt='bird' style={{width:40, height:40, borderRadius:"50%" ,margin:10}}></img>
+          <div>
+              <b>
+                 {name}
+              </b>
+              <div>
+                 {subtitle}
+              </div>
+              {time && <div style={{display:"flex"}}>
+                <div>
+                 {time}
+              </div>
+              <div>
+                <img src="https://tse1.mm.bing.net/th/id/OIP.MERjCbfyuPtidJPOQzKpwgHaHb?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" alt="clock" style={{height:9,width:9,borderRadius:"50%",marginLeft:4,marginTop:6}}></img>
+              </div>
+              </div>}
+              
+          </div>
+     </div>
+     <div>{content} </div>
+</div>
+  );
+
 }
 
 export default App
