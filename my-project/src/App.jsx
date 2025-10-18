@@ -26,7 +26,8 @@ function App() {
     <div style={{background: "#dfe6e9", height: "100vh", }}>
       <button onClick={addPost}>Add post</button>
       <div style={{display: "flex",justifyContent:"center" }}>
-        <div> /*only child of display flex so posts are appearing in vertical form*/
+        <div> 
+          {/* only child of display flex so posts are appearing in vertical form */}
           {postComponents}
         </div>
       </div>
